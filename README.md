@@ -30,3 +30,23 @@ cd mailshield-auditor
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+
+## Sample Report
+
+This repository includes a sample audit report generated for demonstration purposes:
+
+- `examples/sample-report.txt`
+- `examples/sample-report.html`
+
+## Example Output
+
+```text
+Domain: techexon.app
+Grade: C
+Score: 55/100
+Risk: MEDIUM
+
+
+```
+
+The tool checks MX, SPF, DMARC, and DKIM records, then generates TXT and HTML reports.

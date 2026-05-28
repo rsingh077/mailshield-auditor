@@ -1,0 +1,49 @@
+TechExon MailShield Auditor
+========================================
+Domain: techexon.app
+Generated: 2026-05-28 16:16:53 UTC
+Grade: C
+Score: 55/100
+Risk: MEDIUM
+
+Business Impact
+----------------------------------------
+This domain has partial email protection, but policy weaknesses may still allow spoofed emails to reach customers or employees in some cases.
+
+MX
+----------------------------------------
+Status: FOUND
+Score: 10
+Findings:
+- Mail exchange is configured. Provider hint: Zoho
+Recommendation: MX records are present. Confirm they match the intended mail provider.
+
+SPF
+----------------------------------------
+Status: FOUND
+Score: 15
+Findings:
+- SPF uses softfail ~all. This is weaker than strict -all.
+- Zoho mail provider detected.
+Recommendation: Recommended SPF for Zoho-only sending: v=spf1 include:zoho.in -all
+
+DMARC
+----------------------------------------
+Status: FOUND
+Score: 5
+Findings:
+- DMARC policy is p=none. It monitors only and does not block spoofing.
+- DMARC aggregate reporting address rua is missing.
+- DMARC subdomain policy sp is missing.
+- DKIM alignment is relaxed.
+- SPF alignment is relaxed.
+Recommendation: Recommended path: p=none → p=quarantine → p=reject after confirming SPF/DKIM alignment.
+
+DKIM
+----------------------------------------
+Status: FOUND
+Score: 25
+Findings:
+- DKIM selector found: zoho
+Recommendation: DKIM is detected using common selectors. Confirm it is enabled in your mail provider.
+

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TechExon MailShield Report - techexon.app</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0b1020;
+            color: #e8ecf3;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .hero {
+            background: linear-gradient(135deg, #111936, #172554);
+            border: 1px solid #26345f;
+            border-radius: 18px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+        }
+        .brand {
+            color: #67e8f9;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        h1 {
+            margin: 10px 0;
+            font-size: 34px;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 24px;
+        }
+        .metric {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            padding: 18px;
+        }
+        .metric small {
+            color: #94a3b8;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .metric strong {
+            font-size: 24px;
+        }
+        .risk.low strong { color: #22c55e; }
+        .risk.medium strong { color: #facc15; }
+        .risk.high strong { color: #ef4444; }
+        .card {
+            background: #111827;
+            border: 1px solid #263244;
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 18px;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .card h2 {
+            margin: 0;
+            color: #93c5fd;
+        }
+        .card h3 {
+            margin-bottom: 8px;
+            color: #cbd5e1;
+        }
+        .status {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .impact {
+            background: #171717;
+            border-left: 5px solid #67e8f9;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 18px;
+        }
+        pre {
+            background: #020617;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 14px;
+            overflow-x: auto;
+            color: #bae6fd;
+        }
+        .muted {
+            color: #94a3b8;
+        }
+        .footer {
+            color: #94a3b8;
+            text-align: center;
+            padding: 24px;
+            font-size: 13px;
+        }
+        @media (max-width: 800px) {
+            .summary-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="brand">TechExon MailShield Auditor</div>
+            <h1>Email Spoofing Protection Report</h1>
+            <p class="muted">Domain: <strong>techexon.app</strong></p>
+            <p class="muted">Generated: 2026-05-28 16:16:53 UTC</p>
+
+            <div class="summary-grid">
+                <div class="metric">
+                    <small>Grade</small>
+                    <strong>C</strong>
+                </div>
+                <div class="metric">
+                    <small>Score</small>
+                    <strong>55/100</strong>
+                </div>
+                <div class="metric risk medium">
+                    <small>Risk</small>
+                    <strong>MEDIUM</strong>
+                </div>
+                <div class="metric">
+                    <small>Mail Provider</small>
+                    <strong>Zoho</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="impact">
+            <h2>Business Impact</h2>
+            <p>This domain has partial email protection, but policy weaknesses may still allow spoofed emails to reach customers or employees in some cases.</p>
+        </div>
+
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>MX Records</h2>
+                <span class="status">FOUND</span>
+            </div>
+            <p><strong>Score:</strong> 10</p>
+            <h3>Findings</h3>
+            <ul><li>Mail exchange is configured. Provider hint: Zoho</li></ul>
+            <h3>Recommendation</h3>
+            <p>MX records are present. Confirm they match the intended mail provider.</p>
+            <h3>Raw DNS Evidence</h3>
+            <pre>{'priority': 10, 'host': 'mx.zoho.in'}
+{'priority': 20, 'host': 'mx2.zoho.in'}
+{'priority': 50, 'host': 'mx3.zoho.in'}
+</pre>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>SPF Authentication</h2>
+                <span class="status">FOUND</span>
+            </div>
+            <p><strong>Score:</strong> 15</p>
+            <h3>Findings</h3>
+            <ul><li>SPF uses softfail ~all. This is weaker than strict -all.</li><li>Zoho mail provider detected.</li></ul>
+            <h3>Recommendation</h3>
+            <p>Recommended SPF for Zoho-only sending: v=spf1 include:zoho.in -all</p>
+            <h3>Raw DNS Evidence</h3>
+            <pre>v=spf1 include:zoho.in ~all
+</pre>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>DMARC Policy</h2>
+                <span class="status">FOUND</span>
+            </div>
+            <p><strong>Score:</strong> 5</p>
+            <h3>Findings</h3>
+            <ul><li>DMARC policy is p=none. It monitors only and does not block spoofing.</li><li>DMARC aggregate reporting address rua is missing.</li><li>DMARC subdomain policy sp is missing.</li><li>DKIM alignment is relaxed.</li><li>SPF alignment is relaxed.</li></ul>
+            <h3>Recommendation</h3>
+            <p>Recommended path: p=none → p=quarantine → p=reject after confirming SPF/DKIM alignment.</p>
+            <h3>Raw DNS Evidence</h3>
+            <pre>v=DMARC1; p=none;
+</pre>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>DKIM Detection</h2>
+                <span class="status">FOUND</span>
+            </div>
+            <p><strong>Score:</strong> 25</p>
+            <h3>Findings</h3>
+            <ul><li>DKIM selector found: zoho</li></ul>
+            <h3>Recommendation</h3>
+            <p>DKIM is detected using common selectors. Confirm it is enabled in your mail provider.</p>
+            <h3>Raw DNS Evidence</h3>
+            <pre>{'selector': 'zoho', 'record': 'v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAj0OcPMFqFd7zb4ysy7RdwFlZmlND9Zh+akBTw1fg4mbq+gB2POds6fjiRwD1Jn3NPp9dsjcDYPrTaDfBs4QvnCYCu/QYex5cfVZkcV/dgsZWS1gZ2RA1Sv...'}
+</pre>
+        </div>
+        
+
+        <div class="footer">
+            Generated by TechExon MailShield Auditor — Defensive Email Security Assessment
+        </div>
+    </div>
+</body>
+</html>

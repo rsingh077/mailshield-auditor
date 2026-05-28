@@ -22,3 +22,8 @@ reports/
 .vscode/
 .idea/
 .DS_Store
+
+# Allow example reports
+!examples/
+!examples/sample-report.html
+!examples/sample-report.txt
