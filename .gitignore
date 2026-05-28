@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+env/
+
+# Reports / generated output
+reports/
+*.html
+
+# Backups / old versions
+*_backup_*.py
+*_old.py
+
+# Secrets
+.env
+*.key
+*.pem
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
