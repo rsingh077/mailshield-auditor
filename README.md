@@ -24,29 +24,45 @@ It checks a domain's email authentication posture and generates a simple securit
 
 ## Installation
 
-```bash
-git clone https://github.com/rsingh077/mailshield-auditor.git
-cd mailshield-auditor
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+    git clone https://github.com/rsingh077/mailshield-auditor.git
+    cd mailshield-auditor
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+
+## Usage
+
+    python3 mailshield.py example.com
+
+Example:
+
+    python3 mailshield.py techexon.app
+
+Reports are generated inside the reports/ directory.
 
 ## Sample Report
 
 This repository includes a sample audit report generated for demonstration purposes:
 
-- `examples/sample-report.txt`
-- `examples/sample-report.html`
+- examples/sample-report.txt
+- examples/sample-report.html
 
 ## Example Output
 
-```text
-Domain: techexon.app
-Grade: C
-Score: 55/100
-Risk: MEDIUM
-
-
-```
+    Domain: techexon.app
+    Grade: C
+    Score: 55/100
+    Risk: MEDIUM
 
 The tool checks MX, SPF, DMARC, and DKIM records, then generates TXT and HTML reports.
+
+## Disclaimer
+
+This tool is intended for defensive security auditing and authorized domain assessments only. Do not use it on domains without permission.
+
+## Author
+
+Built by Rajveer Singh / TechExon.
+
+GitHub: https://github.com/rsingh077  
+Website: https://techexon.app
